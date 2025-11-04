@@ -1,0 +1,17 @@
+# 1) Tüm kullanıcıların home klasörlerinde boş dosyaları bul
+sudo find /home -type f -empty -print
+
+# 2) Kendi home klasöründeki tüm normal dosyaları bul ve ~/my_files.txt dosyasına kaydet
+find ~ -type f > ~/my_files.txt 2>/dev/null
+
+# 3) Sana ait (senin sahip olduğun) tüm dosyaları bul
+find / -type f -user "$(whoami)" 2>/dev/null
+
+# 4) Home klasöründe son 1 günde değişmiş dosyaları bul
+find ~ -type f -mtime -1
+
+# 5) /usr dizininde ismi içinde "mozilla" geçen dosyaları bul (alt dizinlerde)
+find /usr -mindepth 2 -type f -iname '*mozilla*' 2>/dev/null
+
+# 6) /usr dizini altında adı "bin" olan klasörleri (dizinleri) bul
+find /usr -type d -name bin -print 2>/dev/null
